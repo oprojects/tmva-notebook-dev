@@ -7,7 +7,7 @@
 
 void cvmpi()
 {
-    TMVA::DataLoader *dataloader=new TMVA::DataLoader("dataset");
+    TMVA::DataLoader *dataloader=nullptr;
     TMVA::ParallelExecutorMpi executor;
     
     //setting up the dataloader in the main process
@@ -15,7 +15,7 @@ void cvmpi()
         TFile file("dataset.root");
         dataloader=(TMVA::DataLoader *)file.Get("dataset");
         file.Close();
-    }
+    }else dataloader=new TMVA::DataLoader("dataset");
     
     //if it is the main process it will be send else it will be reciev
     executor.SharedDataLoader(dataloader);
