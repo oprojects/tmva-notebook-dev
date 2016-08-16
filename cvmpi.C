@@ -17,7 +17,7 @@ void cvmpi()
         file.Close();
     }else dataloader=new TMVA::DataLoader("dataset");
     
-    //if it is the main process it will be send else it will be reciev
+    //if it is the main process dataloader will be send else dataloader will be reciev
     executor.SharedDataLoader(dataloader);
     
     TMVA::CrossValidation *cv=new TMVA::CrossValidation(dataloader);
